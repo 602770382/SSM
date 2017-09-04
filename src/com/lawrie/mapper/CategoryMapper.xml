@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lawrie.mapper.CategoryMapper">
+    <insert id="add" parameterType="Category">
+        INSERT INTO category_(name) VALUES (#{name})
+    </insert>
+
+    <delete id="delete" parameterType="Category">
+        DELETE FROM category_ WHERE id=#{id}
+    </delete>
+
+    <update id="update" parameterType="Category">
+        UPDATE category_ SET name=#{name} WHERE id=#{id}
+    </update>
+
+    <select id="get" parameterType="java.lang.Integer" resultType="Category">
+        SELECT * FROM category_ WHERE id=#{id}
+    </select>
+
+    <select id="list" resultType="Category">
+        SELECT * FROM category_
+    </select>
+
+    <!--<select id="listByPage" parameterType="com.lawrie.util.Page" resultType="Category">
+        SELECT * FROM category_
+        <if test="start!=null and count!=null">
+         limit #{start}, #{count}
+        </if>
+    </select>
+
+    <select id="total" resultType="java.lang.Integer">
+        SELECT count(*) FROM category_
+    </select>-->
+</mapper>
