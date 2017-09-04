@@ -12,4 +12,6 @@ public interface CategoryService {
     public void delete(int id);
 
     public void update(Category category);
+
+    public void add(Category category);
 }

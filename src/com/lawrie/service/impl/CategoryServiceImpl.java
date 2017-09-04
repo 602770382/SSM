@@ -36,4 +36,9 @@ public class CategoryServiceImpl implements CategoryService {
     public void update(Category category){
         categoryMapper.update(category);
     }
+
+    public void add(Category category){
+        categoryMapper.add(category);
+    }
+
 }

@@ -56,6 +56,13 @@ public class CategoryController {
         return mav;
     }
 
+    @RequestMapping("/addCategory")
+    public ModelAndView addCategory(Category category){
+        categoryService.add(category);
+        ModelAndView mav=new ModelAndView("redirect:/listCategory");
+        return mav;
+    }
+
 
 
 }

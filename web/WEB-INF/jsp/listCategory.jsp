@@ -36,5 +36,11 @@
     <a href="?start=${page.start+page.count}">下一页</a>
     <a href="?start=${page.last}">尾页</a>
 </div>
+<div style="width:200px;margin:10px auto;">
+    <form action="addCategory" method="post">
+        <input type="text" name="name"/>
+        <input type="submit" value="submit"/>
+    </form>
+</div>
 </body>
 </html>
