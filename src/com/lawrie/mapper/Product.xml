@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.lawrie.mapper.ProductMapper">
+    <resultMap id="productBean" type="Product">
+        <id column="pid" property="id"/>
+        <result column="pname" property="name"/>
+        <result column="price" property="price"/>
+
+        <association property="category" javaType="Category">
+            <id column="cid" property="id"/>
+            <result column="cname" property="name"/>
+        </association>
+    </resultMap>
+
+
+    <select id="list" parameterType="java.util.Map" resultMap="productBean">
+        SELECT c.*,p.*,c.id 'cid',p.id 'pid',c.name 'cname',p.name 'pname'
+        FROM category_ c left JOIN product_ p ON c.id=p.cid
+        WHERE p.cid=#{category.id}
+    </select>
+
+    <insert id="add" parameterType="Product">
+        INSERT INTO product_(name,price,cid) VALUES(#{name},#{price},#{category.id})
+    </insert>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM product_ WHERE id=#{id}
+    </delete>
+
+    <select id="get" parameterType="java.lang.Integer" resultMap="productBean">
+        SELECT c.*,p.*,c.id 'cid',p.id 'pid',c.name 'cname',p.name 'pname'
+        FROM category_ c left JOIN product_ p ON c.id=p.cid
+        WHERE p.id=#{id}
+    </select>
+
+    <update id="update" parameterType="Product">
+        UPDATE product_ SET name=#{name} ,price=#{price},cid=#{category.id} WHERE id=#{id}
+    </update>
+</mapper>

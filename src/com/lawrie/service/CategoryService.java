@@ -15,6 +15,8 @@ public interface CategoryService {
 
     public void add(Category category);
 
+    public Category get(int id);
+
     public void addTwo();
 
     public void deleteAll();

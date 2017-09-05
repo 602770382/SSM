@@ -17,6 +17,7 @@
     <tr>
         <th>id</th>
         <th>name</th>
+        <th>products</th>
         <th>edit</th>
         <th>delete</th>
     </tr>
@@ -24,6 +25,7 @@
         <tr>
             <td>${c.id}</td>
             <td>${c.name}</td>
+            <td><a href="listProduct?id=${c.id}">products</a></td>
             <td><a href="editCategory?id=${c.id}&name=${c.name}">edit</a></td>
             <td><a href="deleteCategory?id=${c.id}">delete</a></td>
         </tr>

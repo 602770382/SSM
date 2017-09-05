@@ -3,7 +3,6 @@ package com.lawrie.service.impl;
 import com.lawrie.mapper.CategoryMapper;
 import com.lawrie.pojo.Category;
 import com.lawrie.service.CategoryService;
-import com.lawrie.util.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -41,6 +40,11 @@ public class CategoryServiceImpl implements CategoryService {
 
     public void add(Category category){
         categoryMapper.add(category);
+    }
+
+    @Override
+    public Category get(int id) {
+        return categoryMapper.get(id);
     }
 
     @Override

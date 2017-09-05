@@ -21,7 +21,7 @@
     </select>
 
     <select id="list" resultType="Category">
-        SELECT * FROM category_
+        SELECT * FROM category_ ORDER BY id DESC
     </select>
 
     <!--<select id="listByPage" parameterType="com.lawrie.util.Page" resultType="Category">
