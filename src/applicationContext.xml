@@ -44,4 +44,25 @@
         <property name="basePackage" value="com.lawrie.mapper"/>
     </bean>
 
+    <!--事务管理器和事务注解扫描器-->
+    <!--<tx:annotation-driven transaction-manager="transactionManager"/>-->
+    <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!--xml配置事务-->
+    <tx:advice id="txadvice" transaction-manager="transactionManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="delete*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="edit*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="update*" propagation="REQUIRED" rollback-for="Exception"/>
+            <tx:method name="list*" propagation="REQUIRED" rollback-for="Exception"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <aop:config>
+        <aop:pointcut id="serviceMethod" expression="execution(* com.lawrie.service.*.*(..))"/>
+        <aop:advisor pointcut-ref="serviceMethod" advice-ref="txadvice"/>
+    </aop:config>
 </beans>
